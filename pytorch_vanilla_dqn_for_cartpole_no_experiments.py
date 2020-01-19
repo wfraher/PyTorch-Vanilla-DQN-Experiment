@@ -18,9 +18,7 @@ episodes = 200
 discount = 0.95
 hidden_size = 32
 batch_size = 32
-mse = False
 print_outputs = False
-num_experiments = 10
 
 #DQN-specific parameters
 
