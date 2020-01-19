@@ -110,10 +110,7 @@ def train():
         target = rewards + discount*(net(nextstates).max(1)[0].detach()) + (-1 * torch.FloatTensor(done) - 1)
 
     optimizer.zero_grad()
-    if mse:
-      loss = criterion(q_values,target.unsqueeze(1))
-    else:
-      loss = F.smooth_l1_loss(q_values,target.unsqueeze(1))
+    loss = criterion(q_values,target.unsqueeze(1))
     loss.backward()
     for param in net.parameters():
         param.grad.data.clamp_(-1, 1)
